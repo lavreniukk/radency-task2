@@ -2,6 +2,7 @@ import ModalBody from "./ModalBody";
 import ModalContent from "./ModalContent";
 import ModalHeader from "./ModalHeader";
 import { ModalOverlay } from "./ModalOverlay";
+import './modal.css';
 
 interface ModalProps {
     isOpen: boolean;

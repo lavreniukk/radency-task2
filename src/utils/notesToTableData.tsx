@@ -8,11 +8,11 @@ import iconNameToIcon from "../constants/iconNames";
 function getIconByCategory(category: string): JSX.Element {
     switch (category) {
         case categories.TaskCategory:
-            return <div className="table_body_icon"><FontAwesomeIcon icon={iconNameToIcon['task']}/></div>;
+            return <div className="table_body_icon"><FontAwesomeIcon icon={iconNameToIcon['task']} color="white"/></div>;
         case categories.IdeaCategory:
-            return <div className="table_body_icon"><FontAwesomeIcon icon={iconNameToIcon['idea']}/></div>;
+            return <div className="table_body_icon"><FontAwesomeIcon icon={iconNameToIcon['idea']} color="white"/></div>;
         case categories.ThoughtCategory:
-            return <div className="table_body_icon"><FontAwesomeIcon icon={iconNameToIcon['thought']}/></div>;
+            return <div className="table_body_icon"><FontAwesomeIcon icon={iconNameToIcon['thought']} color="white"/></div>;
     }
     return <></>;
 }

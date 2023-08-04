@@ -12,6 +12,7 @@ import Modal from '../components/Modal/Modal';
 import { notesToMainTableData, notesToSummaryTableData } from '../utils/notesToTableData';
 import extractDateFromContent from '../utils/extractDate';
 import categories from '../constants/noteCategories';
+import './mainpage.css';
 
 function Main() {
   const [notes, setNotes] = useState<NotesState>({notes: []});
@@ -122,17 +123,17 @@ function Main() {
       key: 'buttons',
       title: '',
       renderHeaderCell: () => (
-        <>
-          <Button onClick={handleArchiveAllClick} iconName='archive'/>
-          <Button onClick={handleDeleteAllClick} iconName='delete'/>
-        </>
+        <div className='table_header_btn-wrap'>
+          <Button onClick={handleArchiveAllClick} iconName='archive' color='white'/>
+          <Button onClick={handleDeleteAllClick} iconName='delete' color='white'/>
+        </div>
       ),
       renderBodyCell: (data) => (
-        <>
-          <Button onClick={() => handleOpenEditModal(data.id)} iconName='edit'/>
-          <Button onClick={() => handleArchiveClick(data.id)} iconName='archive'/>
-          <Button onClick={() => handleDeleteClick(data.id)} iconName='delete'/>
-        </>
+        <div className='table_body_btn-wrap'>
+          <Button onClick={() => handleOpenEditModal(data.id)} iconName='edit' color='#7a7a7a'/>
+          <Button onClick={() => handleArchiveClick(data.id)} iconName='archive' color='#7a7a7a'/>
+          <Button onClick={() => handleDeleteClick(data.id)} iconName='delete' color='#7a7a7a'/>
+        </div>
       )
     }
   ];
@@ -157,13 +158,15 @@ function Main() {
   ];
 
   return (
-    <div>
+    <div className='main-page__container'>
       <Table data={mainTableData} columns={columnsMain}></Table>
-      <Button onClick={handleOpenAddModal} title='Create note'/>
-      <Button onClick={handleShowArchiveClick} title={showArchived ? 'Show active' : 'Show archive'}/>
+      <div className='notes__btn-container'>
+        <Button onClick={handleOpenAddModal} title='Create note' className='notes__button'/>
+        <Button onClick={handleShowArchiveClick} title={showArchived ? 'Show active' : 'Show archive'} className='notes__button'/>
+      </div>
       <Table data={summaryTableData} columns={columnsSummary}></Table>
       <Modal isOpen={isModalOpen} onClose={handleCloseModal} title={formData.title}>
-        <form onSubmit={formData.toUpdate ? handleEditFormSubmit : handleAddFormSubmit}>
+        <form onSubmit={formData.toUpdate ? handleEditFormSubmit : handleAddFormSubmit} className='modal__form'>
           <label className="modal__form_label"> Name: </label>
           <input className="modal__form_input" id="name" name="name" type="text" value={formData.note?.name || ''} onChange={handleChange}/>
           <label className="modal__form_label"> Category: </label>
@@ -177,7 +180,7 @@ function Main() {
           </select>
           <label className="modal__form_label">Content</label>
           <textarea className="modal__form_input" id="content" name="content" rows={5} cols={33} value={formData.note?.content || ''} onChange={handleChange}/>
-          <button type="submit">{formData.title}</button>
+          <button type="submit" className='modal__form_btn'>{formData.title}</button>
         </form>
       </Modal>
     </div>

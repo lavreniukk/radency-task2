@@ -1,6 +1,6 @@
 export default function ModalContent({ children }: {children: React.ReactNode}) {
     return (
-        <div>
+        <div className="modal__container">
             { children }
         </div>
     )
