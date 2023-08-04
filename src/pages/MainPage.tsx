@@ -75,7 +75,6 @@ function Main() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    console.log(formData);
     
     setFormData((prevFormData) => ({
       ...prevFormData,
