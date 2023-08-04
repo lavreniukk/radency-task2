@@ -22,7 +22,7 @@ const noteSlice = createSlice({
                 note.name = payloadNote.name;
                 note.category = payloadNote.category;
                 note.content = payloadNote.content;
-                //note.dates --- extract dates function
+                note.dates = payloadNote.dates;
             }
         },
         archiveNote: (state, action: PayloadAction<number>) => {
@@ -34,10 +34,18 @@ const noteSlice = createSlice({
             const noteId = action.payload;
             const index = state.notes.findIndex((note) => note.id === noteId);
             state.notes.splice(index, 1);
+        },
+        archiveAllNotes: (state) => {
+            state.notes.forEach((note) => {
+                note.isArchived = true;
+            });
+        },
+        deleteAllNotes: (state) => {
+            state.notes = [];
         }
     },
 });
 
-export const { addNote, editNote, deleteNote, archiveNote} = noteSlice.actions;
+export const { addNote, editNote, deleteNote, archiveNote, deleteAllNotes, archiveAllNotes} = noteSlice.actions;
 export const noteSelector = (state: RootState) => state.noteReducer;
 export default noteSlice.reducer;
