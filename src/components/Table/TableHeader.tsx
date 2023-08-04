@@ -6,10 +6,10 @@ interface Props<T> {
 
 export function TableHeader<T>({ columns } : Props<T>): JSX.Element {
     return (
-        <tr>
+        <tr className="table_row">
             {
                 columns.map((column) => (
-                    <th key={column.key}>
+                    <th key={column.key} className="table_header_cell">
                         { column.renderHeaderCell ? column.renderHeaderCell({} as T) : column.title }
                     </th>
                 ))
